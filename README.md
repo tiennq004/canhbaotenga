@@ -98,7 +98,7 @@
 ## 🧩 3. Hình ảnh các chức năng
 
 <p align="center">
-  <img src="https://github.com/tiennq004/canhbaotenga/blob/main/img/so_do_kien_truc_he_thong.jpg" alt="Ảnh 1" width="800"/>
+  <img src="https://github.com/tiennq004/canhbaotenga/blob/main/img/so_do_kien_truc_he_thong.png" alt="Ảnh 1" width="800"/>
 </p> 
 <p align="center">
   <em>Hình 1: Sơ đồ kiến trúc hệ thống  </em>
