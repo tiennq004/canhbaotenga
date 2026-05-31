@@ -97,49 +97,55 @@
 
 ## 🧩 3. Hình ảnh các chức năng
 
-
 <p align="center">
   <img src="https://github.com/tiennq004/canhbaotenga/blob/main/img/ket_qua_huan_luyen_du_lieu.jpg" alt="Ảnh 1" width="800"/>
 </p> 
 <p align="center">
-  <em>Hình 1: Kết quả sau khi huấn luyện dữ liệu  </em>
+  <em>Hình 1: Sơ đồ kiến trúc hệ thống  </em>
 </p>
 
 <p align="center">
-  <img src="https://github.com/tiennq004/canhbaotenga/blob/main/img/video_2_not_fall.png" alt="Ảnh 2" width="800"/>
-    <img src="https://github.com/tiennq004/canhbaotenga/blob/main/img/video_1_not_fall.png" alt="Ảnh 3" width="800"/>
+  <img src="https://github.com/tiennq004/canhbaotenga/blob/main/img/ket_qua_huan_luyen_du_lieu.jpg" alt="Ảnh 2" width="800"/>
 </p> 
 <p align="center">
-  <em>Hình 2: Sau khi chạy code, khi chưa bị té ngã  </em>
+  <em>Hình 2: Kết quả sau khi huấn luyện dữ liệu  </em>
 </p>
 
 <p align="center">
-  <img src="https://github.com/tiennq004/canhbaotenga/blob/main/img/video_2_falled.png" alt="Ảnh 4" width="800"/>
-    <img src="https://github.com/tiennq004/canhbaotenga/blob/main/img/video_1_fall.png" alt="Ảnh 5" width="800"/>
+  <img src="https://github.com/tiennq004/canhbaotenga/blob/main/img/video_2_not_fall.png" alt="Ảnh 3" width="800"/>
+    <img src="https://github.com/tiennq004/canhbaotenga/blob/main/img/video_1_not_fall.png" alt="Ảnh 4" width="800"/>
 </p> 
 <p align="center">
-  <em>Hình 3: Khi té ngã  </em>
+  <em>Hình 3: Sau khi chạy code, khi chưa bị té ngã  </em>
 </p>
 
 <p align="center">
-  <img src="https://github.com/tiennq004/canhbaotenga/blob/main/img/results.png" alt="Ảnh 6" width="800"/>
+  <img src="https://github.com/tiennq004/canhbaotenga/blob/main/img/video_2_falled.png" alt="Ảnh 5" width="800"/>
+    <img src="https://github.com/tiennq004/canhbaotenga/blob/main/img/video_1_fall.png" alt="Ảnh 6" width="800"/>
 </p> 
 <p align="center">
-  <em>Hình 4: Kết quả tính góc độ cơ thể </em>
+  <em>Hình 4: Khi té ngã  </em>
 </p>
 
 <p align="center">
-  <img src="https://github.com/tiennq004/canhbaotenga/blob/main/img/output_fall.png" alt="Ảnh 7" width="800"/>
+  <img src="https://github.com/tiennq004/canhbaotenga/blob/main/img/results.png" alt="Ảnh 7" width="800"/>
 </p> 
 <p align="center">
-  <em>Hình 5: Hệ thống lưu dữ liệu khi phát hiện có người té ngã </em>
+  <em>Hình 5: Kết quả tính góc độ cơ thể </em>
 </p>
 
 <p align="center">
-  <img src="https://github.com/tiennq004/canhbaotenga/blob/main/img/canh_bao_gui_ve_gmail.png" alt="Ảnh 8" width="800"/>
+  <img src="https://github.com/tiennq004/canhbaotenga/blob/main/img/output_fall.png" alt="Ảnh 8" width="800"/>
 </p> 
 <p align="center">
-  <em>Hình 6: Gửi cảnh báo về email cho người dùng </em>
+  <em>Hình 6: Hệ thống lưu dữ liệu khi phát hiện có người té ngã </em>
+</p>
+
+<p align="center">
+  <img src="https://github.com/tiennq004/canhbaotenga/blob/main/img/canh_bao_gui_ve_gmail.png" alt="Ảnh 9" width="800"/>
+</p> 
+<p align="center">
+  <em>Hình 7: Gửi cảnh báo về email cho người dùng </em>
 </p>
 
 ## ⚙️ 4. Các bước cài đặt
