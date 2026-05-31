@@ -208,4 +208,4 @@ Bước 6. Kiểm tra hoạt động
 
 **Giảng viên hướng dẫn:** Ths. Lê Trung Hiếu  
 
-© 2025 – Khoa Công Nghệ Thông Tin, Trường Đại học Đại Nam.
+© 2026 – Khoa Công Nghệ Thông Tin, Trường Đại học Đại Nam.
