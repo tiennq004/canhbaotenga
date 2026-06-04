@@ -5,7 +5,7 @@
 </h2>
 
 <h2 align="center">  
-   XÂY DỰNG HỆ THỐNG PHÁT HIỆN TÉ NGÃ CỦA CON NGƯỜI TỪ DỮ LIỆU VIDEO DỰ TRÊN KỸ THUẬT THỊ GIÁC MÁY TÍNH VÀ PHÂN TÍCH TƯ THẾ CƠ THỂ
+   HỆ THỐNG TRUY XUẤT NGUỒN GỐC DƯỢC PHẨM VÀ THUỐC ĐẶC TRỊ
 </h2>
 
 <div align="center">
