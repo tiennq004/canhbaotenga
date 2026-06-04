@@ -5,7 +5,7 @@
 </h2>
 
 <h2 align="center">  
-   HỆ THỐNG TRUY XUẤT NGUỒN GỐC DƯỢC PHẨM VÀ THUỐC ĐẶC TRỊ
+   XÂY DỰNG HỆ THỐNG PHÁT HIỆN TÉ NGÃ CỦA CON NGƯỜI TỪ DỮ LIỆU VIDEO DỰ TRÊN KỸ THUẬT THỊ GIÁC MÁY TÍNH VÀ PHÂN TÍCH TƯ THẾ CƠ THỂ
 </h2>
 
 <div align="center">
@@ -24,194 +24,188 @@
 
 
 
-<h2 align="center">
-    <a href="https://dainam.edu.vn/vi/khoa-cong-nghe-thong-tin">
-    🎓 Faculty of Information Technology (DaiNam University)
-    </a>
-</h2>
-
-<h2 align="center">
-HỆ THỐNG TRUY XUẤT NGUỒN GỐC DƯỢC PHẨM VÀ THUỐC ĐẶC TRỊ ỨNG DỤNG CÔNG NGHỆ BLOCKCHAIN
-</h2>
-
-<div align="center">
-    <p align="center">
-        <img src="img/dnu_logo.png" alt="DNU Logo" width="180"/>
-    </p>
-</div>
-
----
-
 ## 1. Mục tiêu của hệ thống
 
-* Xây dựng hệ thống truy xuất nguồn gốc dược phẩm minh bạch và đáng tin cậy.
-* Quản lý thông tin nguyên liệu, thuốc thành phẩm và quá trình phân phối.
-* Ứng dụng Blockchain để đảm bảo dữ liệu không thể bị chỉnh sửa hoặc giả mạo.
-* Hỗ trợ người dùng xác minh nguồn gốc thuốc thông qua mã QR.
+- Phát hiện té ngã thời gian thực: Sử dụng camera giám sát hoặc dữ liệu video để nhận diện hành vi té ngã của con người một cách tự động.
 
-### ⚙️ Thành phần hệ thống
+- Phân tích tư thế chính xác: Kết hợp kỹ thuật Pose Estimation (MediaPipe) và HOG Descriptor để trích xuất khung xương, phân tích góc nghiêng thân người và tỉ lệ khung hình.
 
-🔹 1. Quản lý nguyên liệu
+- Cảnh báo tức thời: Tự động gửi thông báo qua Email kèm hình ảnh và video ghi lại khoảnh khắc té ngã để người thân/nhân viên y tế kịp thời ứng phó.
 
-* Đăng ký thông tin nguyên liệu đầu vào.
-* Lưu thông tin nhà cung cấp, số lô và ngày nhập kho.
-* Tạo mã định danh cho từng nguyên liệu.
+- Giảm thiểu báo động giả: Sử dụng các thuật toán lọc chuyển động (Motion Filtering) và kiểm tra sự thay đổi đột ngột của trọng tâm (Drop threshold).
 
-🔹 2. Quản lý thuốc thành phẩm
+⚙️ Thành phần hệ thống
 
-* Đăng ký thông tin thuốc sản xuất.
-* Liên kết thuốc với nguyên liệu sử dụng.
-* Sinh mã QR cho từng sản phẩm.
+🔹 1. Modul sử lí hình ảnh
 
-🔹 3. Blockchain & Smart Contract
+- Pose Estimator: Sử dụng MediaPipe để nhận diện 17 điểm chốt trên cơ thể, tính toán góc nghiêng của thân (torso angle).
 
-* Ghi nhận dữ liệu hash SHA-256 lên Blockchain.
-* Lưu lịch sử thay đổi và chuyển giao sản phẩm.
-* Đảm bảo tính toàn vẹn dữ liệu.
+- HOG Detector: Nhận diện người trong khung hình làm phương án dự phòng khi Pose Estimator bị che khuất.
 
-🔹 4. Truy xuất nguồn gốc
+- Motion Tracker: Phân tích sự thay đổi vị trí theo trục dọc (Y) để xác định vận tốc rơi.
 
-* Quét mã QR để xem thông tin thuốc.
-* Kiểm tra lịch sử sản xuất và phân phối.
-* Xác minh dữ liệu với Blockchain.
+🔹 2. Modul cảnh báo & Lưu trữ
+
+- Email Alert: Tích hợp giao thức SMTP để gửi mail tự động qua Gmail (hỗ trợ đính kèm ảnh và clip mp4).
+
+- Local Logger: Lưu trữ video clip các vụ té ngã vào thư mục outputs/falls để làm bằng chứng đối chiếu.
 
 💡 Điểm nổi bật
 
-* Minh bạch toàn bộ chuỗi cung ứng dược phẩm.
-* Chống giả mạo dữ liệu bằng Blockchain.
-* Truy xuất nguồn gốc nhanh chóng bằng QR Code.
-* Dễ dàng mở rộng cho nhiều loại dược phẩm khác nhau.
+- 💬 Cảnh báo đa phương thức: Gửi email ảnh ngay lập tức và video clip ngay sau khi sự cố kết thúc.
 
----
+- 🏃 Xử lý luồng tối ưu: Hỗ trợ đa luồng (threading) cho việc gửi email, không gây giật lag luồng xử lý ảnh chính.
+
+- 🔒 Bảo mật: Quản lý thông tin nhạy cảm (Email, Password) qua biến môi trường .env.
+
+- 💻 Tương thích cao: Hoạt động tốt trên cả Webcam trực tiếp và các file video định dạng phổ biến (mp4, avi).
 
 ## ⚙️ 2. Công nghệ và công cụ sử dụng
 
-```text
-Nguyên liệu
-      ↓
-Đăng ký dữ liệu
-      ↓
-SHA-256 Hash
-      ↓
-Blockchain
-      ↓
-QR Code
-      ↓
-Người dùng truy xuất
-```
+    Input (Camera / Video File)
+       ↓
+    Processing (OpenCV + MediaPipe + HOG)
+       ↓
+    Alert (SMTP Service + Threading)
 
-### 🖥️ Công nghệ chính
+🖥️ Công nghệ xử lý chính
 
-* ReactJS: Xây dựng giao diện người dùng.
-* NodeJS + ExpressJS: Xử lý nghiệp vụ hệ thống.
-* Firebase: Lưu trữ dữ liệu.
-* Solidity: Xây dựng Smart Contract.
-* Hardhat: Triển khai và kiểm thử Blockchain.
-* MetaMask: Kết nối ví Blockchain.
-* SHA-256: Mã hóa và xác minh dữ liệu.
-* QR Code: Truy xuất nguồn gốc sản phẩm.
+ - Python 3.x: Ngôn ngữ lập trình chính.
 
-### 🛠️ Công cụ phát triển
+ - OpenCV: Xử lý khung hình, vẽ bounding box và ghi video.
 
-* Visual Studio Code.
-* NodeJS.
-* GitHub.
-* Firebase Console.
-* MetaMask.
+ - MediaPipe: Trích xuất tọa độ các điểm chốt cơ thể (landmarks).
 
+ - NumPy: Tính toán đại số tuyến tính và góc hình học.
+
+💻 Dịch vụ và giao thức
+
+ - SMTP (Gmail): Gửi thông báo khẩn cấp.
+
+ - Python-dotenv: Quản lý cấu hình hệ thống.
+
+ - Argparse: Cung cấp giao diện dòng lệnh linh hoạt.
+
+🛠️ Công cụ phát triển
+
+ - IDE: Visual Studio Code / PyCharm.
+
+ - Thư viện yêu cầu: opencv-python, mediapipe, python-dotenv, numpy.
+
+ - Hệ điều hành: Windows / Linux / macOS.
 ---
 
 ## 🧩 3. Hình ảnh các chức năng
 
-### Hình 1: Sơ đồ kiến trúc hệ thống
+<p align="center">
+  <img src="https://github.com/tiennq004/canhbaotenga/blob/main/img/ket_qua_huan_luyen_du_lieu.jpg" alt="Ảnh 1" width="800"/>
+</p> 
+<p align="center">
+  <em>Hình 1: Sơ đồ kiến trúc hệ thống  </em>
+</p>
 
-(Chèn ảnh sơ đồ kiến trúc)
+<p align="center">
+  <img src="https://github.com/tiennq004/canhbaotenga/blob/main/img/ket_qua_huan_luyen_du_lieu.jpg" alt="Ảnh 2" width="800"/>
+</p> 
+<p align="center">
+  <em>Hình 2: Kết quả sau khi huấn luyện dữ liệu  </em>
+</p>
 
-### Hình 2: Giao diện chính
+<p align="center">
+  <img src="https://github.com/tiennq004/canhbaotenga/blob/main/img/video_2_not_fall.png" alt="Ảnh 3" width="800"/>
+    <img src="https://github.com/tiennq004/canhbaotenga/blob/main/img/video_1_not_fall.png" alt="Ảnh 4" width="800"/>
+</p> 
+<p align="center">
+  <em>Hình 3: Sau khi chạy code, khi chưa bị té ngã  </em>
+</p>
 
-(Chèn ảnh giao diện chính)
+<p align="center">
+  <img src="https://github.com/tiennq004/canhbaotenga/blob/main/img/video_2_falled.png" alt="Ảnh 5" width="800"/>
+    <img src="https://github.com/tiennq004/canhbaotenga/blob/main/img/video_1_fall.png" alt="Ảnh 6" width="800"/>
+</p> 
+<p align="center">
+  <em>Hình 4: Khi té ngã  </em>
+</p>
 
-### Hình 3: Đăng ký nguyên liệu
+<p align="center">
+  <img src="https://github.com/tiennq004/canhbaotenga/blob/main/img/results.png" alt="Ảnh 7" width="800"/>
+</p> 
+<p align="center">
+  <em>Hình 5: Kết quả tính góc độ cơ thể </em>
+</p>
 
-(Chèn ảnh đăng ký nguyên liệu)
+<p align="center">
+  <img src="https://github.com/tiennq004/canhbaotenga/blob/main/img/output_fall.png" alt="Ảnh 8" width="800"/>
+</p> 
+<p align="center">
+  <em>Hình 6: Hệ thống lưu dữ liệu khi phát hiện có người té ngã </em>
+</p>
 
-### Hình 4: Đăng ký thuốc thành phẩm
-
-(Chèn ảnh đăng ký thuốc)
-
-### Hình 5: Phân phối sản phẩm
-
-(Chèn ảnh phân phối)
-
-### Hình 6: Kho mã QR
-
-(Chèn ảnh kho QR)
-
-### Hình 7: Giao diện người bán
-
-(Chèn ảnh người bán)
-
-### Hình 8: Quét QR xác minh nguồn gốc
-
-(Chèn ảnh truy xuất nguồn gốc)
-
----
+<p align="center">
+  <img src="https://github.com/tiennq004/canhbaotenga/blob/main/img/canh_bao_gui_ve_gmail.png" alt="Ảnh 9" width="800"/>
+</p> 
+<p align="center">
+  <em>Hình 7: Gửi cảnh báo về email cho người dùng </em>
+</p>
 
 ## ⚙️ 4. Các bước cài đặt
 
-### Bước 1. Clone dự án
+ - Các bước cài đặt và chạy chương trình
 
-```bash
-git clone https://github.com/tiennq004/truy_xuat_nguon_goc.git
-```
+Bước 1. Giải nén dự án
 
-### Bước 2. Cài đặt thư viện
+ - Giải nén mã nguồn vào một thư mục trên máy tính.
 
-```bash
-npm install
-```
+Bước 2. Cài đặt môi trường
 
-### Bước 3. Cấu hình môi trường
+ - Cài đặt Python (phiên bản ≥ 3.9).
 
-Tạo file .env và cấu hình:
+ - Tạo môi trường ảo (khuyến khích): python -m venv venv.
 
-```env
-FIREBASE_API_KEY=your_key
-FIREBASE_PROJECT_ID=your_project
-PRIVATE_KEY=your_private_key
-```
+Bước 3. Cài đặt thư viện
 
-### Bước 4. Chạy Frontend
+ - Chạy lệnh cài đặt các thư viện cần thiết:
 
-```bash
-npm run dev
-```
+        pip install -r requirements.txt
 
-### Bước 5. Chạy Smart Contract
+Bước 4. Cấu hình biến môi trường
 
-```bash
-npx hardhat node
-npx hardhat run scripts/deploy.js
-```
+ - Tạo file .env từ file .env.example.
 
-### Bước 6. Kết nối MetaMask
+ - Điền thông tin Gmail App Password để hệ thống có quyền gửi mail:
 
-* Import ví.
-* Kết nối mạng Blockchain.
-* Xác nhận giao dịch.
+        SMTP_USER=your_email@gmail.com
+        
+        SMTP_APP_PASSWORD=your_app_password
+        
+        ALERT_TO_EMAIL=recipient_email@gmail.com
 
----
+Bước 5. Chạy chương trình
+
+ - Chạy với Webcam:
+
+        python fall_live.py --camera 0
+ 
+ - Chạy với tệp video có sẵn:
+
+        python fall_live.py --video video_test.mp4
+
+Bước 6. Kiểm tra hoạt động
+
+ - Khi có người té ngã, màn hình sẽ hiển thị dòng chữ "FALL DETECTED" màu đỏ.
+
+ - Kiểm tra hộp thư đến của Email để nhận cảnh báo.
 
 ## 👥 5. Thực hiện
 
-* Nguyễn Quang Tiến
+- Nguyễn Quang Tiến
 
-* Lớp: CNTT 16-03
+- Lớp: CNTT 16-03
 
-* Khoa: Công nghệ thông tin
+- Khoa: Công nghệ thông tin
 
-* Trường: Đại học Đại Nam
+- Trường: Đại học Đại Nam
 
-**Giảng viên hướng dẫn:** ThS. Trần Đăng Công
+**Giảng viên hướng dẫn:** Ths. Lê Trung Hiếu  
 
-© 2026 – Khoa Công Nghệ Thông Tin, Trường Đại học Đại Nam.
+© 2025 – Khoa Công Nghệ Thông Tin, Trường Đại học Đại Nam.
